@@ -8,6 +8,7 @@ DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master
 
 ### 1. 模型与训练策略
 *   **基础模型 (`model_name_or_path`)**: `facebook/opt-1.3b`
+*   **训练数据集**: `Dahoas/rm-static`，Total Micro Batches * train_micro_batch_size_per_gpu * world_size 1907 * 8 * 1 = 15256 个样本。数据集地址：https://huggingface.co/datasets/Dahoas/rm-static
 *   **LoRA 维度 (`lora_dim`)**: `128`
 *   **梯度累积步数 (`gradient_accumulation_steps`)**: `16`
 
