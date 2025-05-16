@@ -308,7 +308,7 @@ DeepSpeed-Chat: https://github.com/deepspeedai/DeepSpeedExamples/tree/master/app
 ### 3. 数据与训练循环
 *   **数据集来源**: `Dahoas/rm-static` (默认路径，脚本内 `create_datasets` 会根据 `train_phase=3` 选择数据)
 *   **总迭代次数 (`total_iters`)**: `774` (计算得出，用于学习率调度等)
-*   **每 Epoch 总生成批次数**: `1548`
+*   **每 Epoch 总生成批次数**: `1548`，总训练数据量 = 用于生成经验的 总提示数量 为: 1548 (Total Generation Batches) * 16 (per_device_generation_batch_size) = 24768 个提示。
 *   **训练 Epoch 数 (`num_train_epochs` 来自代码默认值)**: `1`
 *   **每个经验批次的 PPO Epoch 数 (`args.ppo_epochs`)**: `1`
 
