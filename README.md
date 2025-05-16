@@ -1,8 +1,10 @@
-# DeepSpeed-Chat-Training-Record
+![image](https://github.com/user-attachments/assets/c26d1595-4d55-48f7-be06-d062cca0e9fc)# DeepSpeed-Chat-Training-Record
 DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master/applications/DeepSpeed-Chat/
 
 <details>
 <summary>Step1 SFT</summary>
+
+# Actor Model `facebook/opt-1.3b` 训练日志分析
     
 ## I. 参数设置
 
@@ -109,9 +111,8 @@ DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master
 
 <details>
 <summary>Step2 Reward Model</summary>
-# Reward Model (facebook/opt-350m) 训练日志分析
 
-此日志详细记录了基于 `facebook/opt-350m` 的 Reward Model (RM) 的训练过程。
+# Reward Model `facebook/opt-350m` 训练日志分析
 
 ## I. 参数设置
 
@@ -152,8 +153,8 @@ DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master
 *   **优化器与学习率调度器:**
     *   **使用的客户端优化器**: `FusedAdam`
     *   **使用的客户端学习率调度器**: `torch.optim.lr_scheduler.LambdaLR`
-    *   **初始学习率 (`lr`)**: `[5e-05, 5e-05]`
-    *   **初始动量 (`mom`)**: `[(0.9, 0.95), (0.9, 0.95)]`
+    *   **初始学习率 (`lr`)**: `5e-05`
+    *   **初始动量 (`mom`)**: `(0.9, 0.95)`
 *   **梯度:**
     *   **梯度裁剪 (`gradient_clipping`)**: `1.0`
 *   **日志与 TensorBoard:**
@@ -221,7 +222,8 @@ DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master
     *   **准确率**从 `0.4750` 提升至 `0.6087`。
 *   该 epoch 的**平均训练损失**约为 `0.670`。
 *   在训练刚开始时（迭代0次）发生了一次**梯度溢出**，动态损失缩放器相应地进行了调整。
-*   从命令执行 (`[2025-05-02 11:04:43,603]`) 到 "saving model ..." 消息 (在 `[2025-05-02 11:07:46,xxx]` 之后) 的总时间约为 **3 分钟**。单个 epoch 的实际训练循环是此持续时间的一部分。
+*   从命令执行 (`[2025-05-02 11:04:43,603]`) 到 "saving model ..." 消息 (`[2025-05-02 11:24:21,xxx]` ) 的总时间约为 **20 分钟**。单个 epoch 的实际训练循环是此持续时间的一部分。
+  
 </details>
 
 
