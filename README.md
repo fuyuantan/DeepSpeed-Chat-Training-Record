@@ -1,5 +1,5 @@
-![image](https://github.com/user-attachments/assets/c26d1595-4d55-48f7-be06-d062cca0e9fc)# DeepSpeed-Chat-Training-Record
-DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master/applications/DeepSpeed-Chat/
+# My DeepSpeed-Chat-Training-Record
+DeepSpeed-Chat: https://github.com/deepspeedai/DeepSpeedExamples/tree/master/applications/DeepSpeed-Chat/
 
 <details>
 <summary>Step1 SFT</summary>
