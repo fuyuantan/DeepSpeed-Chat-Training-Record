@@ -6,9 +6,9 @@ DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master
 
 I. 参数设置:<br>
 1.模型与训练策略:<br>
-  基础模型 (model_name_or_path): facebook/opt-1.3b<br>
-  LoRA 维度 (lora_dim): 128<br>
-  梯度累积步数 (gradient_accumulation_steps): 16<br>
+&nbsp;&nbsp;基础模型 (model_name_or_path): facebook/opt-1.3b<br>
+&nbsp;&nbsp;LoRA 维度 (lora_dim): 128<br>
+&nbsp;&nbsp;梯度累积步数 (gradient_accumulation_steps): 16<br>
 2.分布式训练 (DeepSpeed Launcher):<br>
   执行命令 (cmd): 包含了完整的启动命令，指明使用 deepspeed.launcher.launch<br>
   节点信息 (world_info): {'localhost': [0]} (表示在本地机器的 GPU 0 上训练)<br>
