@@ -3,7 +3,9 @@ My training record of DeepSpeed-Chat.
 I. 参数设置:
 模型与训练策略:
 基础模型 (model_name_or_path): facebook/opt-1.3b
+
 LoRA 维度 (lora_dim): 128
+
 梯度累积步数 (gradient_accumulation_steps): 16
 分布式训练 (DeepSpeed Launcher):
 执行命令 (cmd): 包含了完整的启动命令，指明使用 deepspeed.launcher.launch
