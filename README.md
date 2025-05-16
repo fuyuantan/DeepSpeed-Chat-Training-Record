@@ -3,6 +3,7 @@ DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master
 
 <details>
 <summary>Step1 SFT</summary>
+    
 ## I. 参数设置
 
 ### 1. 模型与训练策略
@@ -42,8 +43,8 @@ DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master
 #### d. 优化器与学习率调度器
 *   **使用的客户端优化器**: `FusedAdam`
 *   **使用的客户端学习率调度器**: `torch.optim.lr_scheduler.LambdaLR`
-*   **初始学习率 (`lr`)**: `[0.001, 0.0005, 0.001]`
-*   **初始动量 (`mom`)**: `[(0.9, 0.95), (0.9, 0.95), (0.9, 0.95)]`
+*   **初始学习率 (`lr`)**: `0.001`
+*   **初始动量 (`mom`)**: `(0.9, 0.95)`
 
 #### e. 梯度处理
 *   **梯度裁剪 (`gradient_clipping`)**: `1.0`
@@ -101,4 +102,5 @@ DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master
 *   **损失 (loss)** 从初始的 `2.125` 降低到 `1.781`。
 *   **困惑度 (perplexity, ppl)** 从初始的 `8.377` 改善至 `5.938`。
 *   主要训练循环和最终评估过程大约耗时: **11 分 47 秒** (不包括初始环境设置和 FusedAdam 编译时间)。
+*   
 </details>
