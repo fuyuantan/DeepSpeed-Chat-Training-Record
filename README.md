@@ -4,33 +4,34 @@ DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master
 <details>
 <summary>Step1 SFT</summary>
 
-I. 参数设置:<br>
-1.模型与训练策略:<br>
+**I. 参数设置:**<br>
+
+**1.模型与训练策略:**<br>
 &nbsp;&nbsp;基础模型 (model_name_or_path): facebook/opt-1.3b<br>
 &nbsp;&nbsp;LoRA 维度 (lora_dim): 128<br>
 &nbsp;&nbsp;梯度累积步数 (gradient_accumulation_steps): 16<br>
-2.分布式训练 (DeepSpeed Launcher):<br>
-  执行命令 (cmd): 包含了完整的启动命令，指明使用 deepspeed.launcher.launch<br>
-  节点信息 (world_info): {'localhost': [0]} (表示在本地机器的 GPU 0 上训练)<br>
-  主节点地址 (master_addr): 127.0.0.1<br>
-  主节点端口 (master_port): 29500<br>
-  节点数量 (nnodes): 1<br>
-  本地进程数 (num_local_procs): 1 (即使用1个GPU)<br>
-  总进程数/世界大小 (dist_world_size): 1<br>
-  可见CUDA设备 (CUDA_VISIBLE_DEVICES): 0<br>
-3.DeepSpeed 配置 (从日志中的 DeepSpeedEngine configuration 和 json 部分提取):<br>
-    批处理大小:<br>
-        训练总批次大小 (train_batch_size): 128<br>
-        每个GPU的微批次大小 (train_micro_batch_size_per_gpu): 8(验证: 微批次 8 * 梯度累积 16 = 128，与总批次大小相符)<br>
-    ZeRO 优化:<br>
-        ZeRO 阶段 (zero_stage / zero_optimization.stage): 0 (表示优化器状态和梯度不进行分片)<br>
-        参数卸载 (offload_param.device): none (参数不卸载到CPU/NVMe)<br>
-        优化器状态卸载 (offload_optimizer.device): none (优化器状态不卸载)
-    精度控制:<br>
-        FP16 启用 (fp16.enabled): True (启用了混合精度训练)<br>
-        FP16 损失缩放窗口 (fp16.loss_scale_window): 100<br>
-        初始动态损失缩放值 (initial_dynamic_scale / dynamic_loss_scale_args.init_scale): 65536<br>
-    优化器与学习率调度器:<br>
+**2.分布式训练 (DeepSpeed Launcher):**<br>
+&nbsp;&nbsp;执行命令 (cmd): 包含了完整的启动命令，指明使用 deepspeed.launcher.launch<br>
+&nbsp;&nbsp;节点信息 (world_info): {'localhost': [0]} (表示在本地机器的 GPU 0 上训练)<br>
+&nbsp;&nbsp;主节点地址 (master_addr): 127.0.0.1<br>
+&nbsp;&nbsp;主节点端口 (master_port): 29500<br>
+&nbsp;&nbsp;节点数量 (nnodes): 1<br>
+&nbsp;&nbsp;本地进程数 (num_local_procs): 1 (即使用1个GPU)<br>
+&nbsp;&nbsp;总进程数/世界大小 (dist_world_size): 1<br>
+&nbsp;&nbsp;可见CUDA设备 (CUDA_VISIBLE_DEVICES): 0<br>
+**3.DeepSpeed 配置 (从日志中的 DeepSpeedEngine configuration 和 json 部分提取):**<br>
+&nbsp;&nbsp;批处理大小:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;训练总批次大小 (train_batch_size): 128<br>
+&nbsp;&nbsp;&nbsp;&nbsp;每个GPU的微批次大小 (train_micro_batch_size_per_gpu): 8(验证: 微批次 8 * 梯度累积 16 = 128，与总批次大小相符)<br>
+&nbsp;&nbsp;ZeRO 优化:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ZeRO 阶段 (zero_stage / zero_optimization.stage): 0 (表示优化器状态和梯度不进行分片)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;参数卸载 (offload_param.device): none (参数不卸载到CPU/NVMe)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;优化器状态卸载 (offload_optimizer.device): none (优化器状态不卸载)
+&nbsp;&nbsp;精度控制:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FP16 启用 (fp16.enabled): True (启用了混合精度训练)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FP16 损失缩放窗口 (fp16.loss_scale_window): 100<br>
+&nbsp;&nbsp;&nbsp;&nbsp;初始动态损失缩放值 (initial_dynamic_scale / dynamic_loss_scale_args.init_scale): 65536<br>
+&nbsp;&nbsp;优化器与学习率调度器:<br>
         使用的客户端优化器: FusedAdam (DeepSpeed 提供的融合 Adam 优化器)<br>
         使用的客户端学习率调度器: torch.optim.lr_scheduler.LambdaLR<br>
         初始学习率 (lr): 0.001<br>
