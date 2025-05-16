@@ -102,5 +102,19 @@ DeepSpeed-Chat from https://github.com/deepspeedai/DeepSpeedExamples/tree/master
 *   **损失 (loss)** 从初始的 `2.125` 降低到 `1.781`。
 *   **困惑度 (perplexity, ppl)** 从初始的 `8.377` 改善至 `5.938`。
 *   主要训练循环和最终评估过程大约耗时: **11 分 47 秒** (不包括初始环境设置和 FusedAdam 编译时间)。
-*   
+
 </details>
+
+
+<details>
+<summary>Step2 Reward Model</summary>
+
+</details>
+
+
+<details>
+<summary>Step3 PPO-RLHF</summary>
+
+</details>
+
+
